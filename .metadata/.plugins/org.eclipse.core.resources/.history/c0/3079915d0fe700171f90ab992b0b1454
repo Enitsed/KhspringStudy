@@ -1,0 +1,14 @@
+package simple03;
+
+public class HelloSpring {
+
+	public static void main(String[] args) {
+		MessageBean bean = MessageFactory.getInstance("en");
+		bean.sayHello("Spring");
+
+		bean = MessageFactory.getInstance("ko");
+		bean.sayHello("스프링");
+
+	} // end main()
+
+} // end class

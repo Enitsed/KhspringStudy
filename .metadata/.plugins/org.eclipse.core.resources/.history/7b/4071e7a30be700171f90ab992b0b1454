@@ -1,0 +1,8 @@
+package simple02;
+
+public class MessageBeanKorea implements MessageBean {
+	@Override
+	public void sayHello(String name) {
+		
+	}
+} // end class

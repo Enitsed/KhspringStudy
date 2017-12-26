@@ -1,0 +1,9 @@
+package part01_basic;
+
+public class Mysql implements Service{
+	public Mysql() {
+
+	}
+	
+	
+}

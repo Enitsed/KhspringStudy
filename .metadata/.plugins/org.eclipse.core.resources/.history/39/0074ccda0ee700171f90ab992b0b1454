@@ -1,0 +1,9 @@
+package simple03;
+
+public class MessageFactory {
+	public static MessageBean getInstance(String type) {
+
+		return null;
+	} // end getInstance()
+
+} // end class

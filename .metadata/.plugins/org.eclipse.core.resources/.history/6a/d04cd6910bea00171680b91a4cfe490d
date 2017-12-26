@@ -1,0 +1,14 @@
+package part01_basic;
+
+public class Mysql implements Service{
+	public Mysql() {
+
+	}
+
+	@Override
+	public void prn() {
+		System.out.println("mysql");
+	}
+	
+	
+}

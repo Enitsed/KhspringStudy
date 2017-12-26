@@ -1,0 +1,16 @@
+package part01_basic;
+
+public class OracleImp implements Service {
+
+	public OracleImp() {
+		
+	}
+
+	@Override
+	public void prn() {
+		System.out.println("oracle prn");
+	}
+
+	
+	
+} // end class

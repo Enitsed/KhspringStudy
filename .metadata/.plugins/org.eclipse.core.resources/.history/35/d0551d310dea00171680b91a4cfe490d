@@ -1,0 +1,30 @@
+package part02_constructor;
+
+public class ServiceImp implements Service {
+	private String name;
+	private int age;
+	private String dept;
+	private Random ran;
+	
+	
+
+	public ServiceImp() {
+		
+	}
+
+	@Override
+	public void prn1() {
+
+	}
+
+	@Override
+	public void prn2() {
+
+	}
+
+	@Override
+	public void prn3() {
+
+	}
+
+} // end class

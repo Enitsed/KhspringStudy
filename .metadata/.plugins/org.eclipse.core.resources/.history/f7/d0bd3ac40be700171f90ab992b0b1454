@@ -1,0 +1,7 @@
+package simple02;
+
+public interface MessageBean {
+	default void sayHello(String name) {
+		System.out.println("Hello, " + name + "!!!");
+	}
+} // end interface
