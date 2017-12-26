@@ -1,4 +1,7 @@
-.metadata
+.metadata/
+Servers/
+.recommenders/
+RemoteSystemsTempFiles/
 *.com
 *.class
 *.dll
@@ -20,7 +23,4 @@
 .Trashes
 ehthumbs.db
 Thumbs.db
-*.snap
 *.index
-*.snap
-*.snap
