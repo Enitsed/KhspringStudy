@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- List<Integer> list = new ArrayList<Integer>(); list.add(new Integer(10)); 
+		list.add(new Integer(20)); list.add(new Integer(30)); ServiceImp svc1 = new 
+		ServiceImp(list); -->
+	<bean id="svc1" class="part06_collection.ServiceImp">
+		<constructor-arg>
+			<list>
+				<value>10</value>
+				<value>20</value>
+				<value>30</value>
+			</list>
+		</constructor-arg>
+	</bean>
+
+	<!-- Map<String, Integer> map = new LinkedHashMap<String,Integer>(); map.put("kim", 
+		1000); map.put("park", 3000); ServiceImp svc2 = new ServiceImp(map); -->
+	<bean id="svc2" class="part06_collection.ServiceImp">
+		<constructor-arg>
+			<map>
+				<!-- entry 태그 안에 키와 밸류값을 묶어준다. -->
+				<entry>
+					<key>
+						<value>kim</value>
+					</key>
+					<value>1000</value>
+				</entry>
+				<entry>
+					<key>
+						<value>park</value>
+					</key>
+					<value>3000</value>
+				</entry>
+			</map>
+		</constructor-arg>
+	</bean>
+
+	<!-- Set<String set = new LinkedHashSet<String>(); set.add("java"); set.add("jsp"); 
+		ServiceImp svc3 = new ServiceImp(set); -->
+	<bean id="svc3" class="part06_collection.ServiceImp">
+		<constructor-arg>
+			<set>
+				<value>java</value>
+				<value>jsp</value>
+			</set>
+		</constructor-arg>
+	</bean>
+
+	<!-- Properties prop = new Properties(); prop.setProperty("ip", "127.0.0.1"); 
+		prop.setProperty("port", "80"); ServiceImp svc4= new ServiceImp(prop) -->
+	<bean id="svc4" class="part06_collection.ServiceImp">
+		<constructor-arg>
+			<props>
+				<prop key="ip">127.0.0.1</prop>
+				<prop key="port">80</prop>
+			</props>
+		</constructor-arg>
+	</bean>
+
+
+</beans>
