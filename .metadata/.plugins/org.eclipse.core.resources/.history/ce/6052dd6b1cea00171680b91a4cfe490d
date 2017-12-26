@@ -1,0 +1,22 @@
+package part05_exam;
+
+public class ServiceImp implements Service{
+	private MemDaoImp memDao;
+
+	public ServiceImp() {
+
+	}
+
+	public ServiceImp(MemDaoImp memDao) {
+		this.memDao = memDao;
+	}
+
+	public MemDaoImp getMemDao() {
+		return memDao;
+	}
+
+	public void setMemDao(MemDaoImp memDao) {
+		this.memDao = memDao;
+	}
+
+} // end class

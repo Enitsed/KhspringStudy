@@ -19,7 +19,6 @@ public class SpringTest {
 		// svc.prn1();
 
 		svc = (Service) context.getBean("svc4");
-		svc.prn2();
 
 	} // end main()
 
