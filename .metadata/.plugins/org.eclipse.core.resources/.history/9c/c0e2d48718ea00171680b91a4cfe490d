@@ -1,0 +1,18 @@
+package part04_property;
+
+public class ServiceImp implements Service {
+	private Random ran;
+
+	@Override
+	public void prn1() {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void prn2() {
+		// TODO Auto-generated method stub
+
+	}
+
+}
