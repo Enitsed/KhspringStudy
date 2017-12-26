@@ -11,6 +11,7 @@
 		<config>src/main/java/part02_constructor/di.xml</config>
 		<config>src/main/java/part03_exam/di.xml</config>
 		<config>src/main/java/part04_property/di.xml</config>
+		<config>src/main/java/part05_exam/di.xml</config>
 	</configs>
 	<autoconfigs>
 	</autoconfigs>
