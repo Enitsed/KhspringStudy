@@ -9,7 +9,6 @@ public class SpringTest {
 		ApplicationContext context = new ClassPathXmlApplicationContext("part05_exam/di.xml");
 		Service svc = (Service) context.getBean("svc");
 		svc.prn();
-
 	} // end main()
 
 } // end class
