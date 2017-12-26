@@ -1,0 +1,6 @@
+package part03_exam;
+
+public class MemDaoImp {
+	public MemDaoImp() {
+	}
+} // end class
