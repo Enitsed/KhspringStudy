@@ -3,10 +3,10 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-	<bean id="dao" class="part05_exam.MemDaoImp"></bean>
+	<bean id="memDao" class="part05_exam.MemDaoImp"></bean>
 
 	<bean id="svc" class="part05_exam.ServiceImp">
-		<property name="memDao" ref="dao" />
+		<property name="memDao" ref="memDao" />
 	</bean>
 
 </beans>
