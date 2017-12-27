@@ -15,6 +15,10 @@
 		<config>src/main/java/part06_collection/di.xml</config>
 		<config>src/main/java/part08_multi_xml/di1.xml</config>
 		<config>src/main/java/part08_multi_xml/di2.xml</config>
+		<config>src/main/java/part09_xml_annotation/di.xml</config>
+		<config>src/main/java/part10_annotation_xml/di1.xml</config>
+		<config>src/main/java/part10_annotation_xml/di2.xml</config>
+		<config>src/main/java/part12_listener/di.xml</config>
 	</configs>
 	<autoconfigs>
 	</autoconfigs>
