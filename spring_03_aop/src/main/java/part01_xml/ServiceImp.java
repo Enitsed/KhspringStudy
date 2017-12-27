@@ -1,11 +1,11 @@
 package part01_xml;
 
+// 핵심 로직만 구현해 놓은 클래스 - 핵심 관점
 public class ServiceImp implements Service {
 
 	@Override
 	public void prn1() {
-		// TODO Auto-generated method stub
-
+		System.out.println("prn");
 	}
 
 	@Override
