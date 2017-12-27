@@ -11,10 +11,6 @@ public class MemDaoImp implements MemDAO {
 
 	}
 
-	public JdbcTemplate getJdbcTemplate() {
-		return jdbcTemplate;
-	}
-
 	public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
 		this.jdbcTemplate = jdbcTemplate;
 	}
