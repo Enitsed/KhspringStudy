@@ -1,5 +1,0 @@
-package simple02;
-
-public interface MessageBean {
-	abstract void sayHello(String name)
-} // end interface

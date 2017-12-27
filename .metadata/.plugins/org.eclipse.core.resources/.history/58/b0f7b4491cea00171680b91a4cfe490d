@@ -1,9 +1,0 @@
-package part05_exam;
-
-public class ServiceImp {
-	private MemDaoImp memDao;
-
-	public ServiceImp() {
-		// TODO Auto-generated constructor stub
-	}
-}

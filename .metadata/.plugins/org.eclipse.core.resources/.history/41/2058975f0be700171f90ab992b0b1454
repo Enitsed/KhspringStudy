@@ -1,7 +1,0 @@
-package simple02;
-
-public interface MessageBean {
-	public default void sayHello(String name) {
-		print
-	}
-}

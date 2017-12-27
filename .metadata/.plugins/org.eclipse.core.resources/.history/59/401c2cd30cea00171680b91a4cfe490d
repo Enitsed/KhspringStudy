@@ -1,5 +1,0 @@
-package part02_constructor;
-
-public interface Service {
-
-}

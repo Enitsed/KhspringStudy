@@ -1,5 +1,0 @@
-package simple02;
-
-public class MessageBeanKorea implements MessageBean{
-	
-} // end class
