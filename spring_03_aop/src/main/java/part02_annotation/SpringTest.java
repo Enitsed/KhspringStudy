@@ -1,4 +1,4 @@
-package part01_xml;
+package part02_annotation;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -13,27 +13,27 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class SpringTest {
 
 	public static void main(String[] args) {
-		ApplicationContext context = new ClassPathXmlApplicationContext("part01_xml/aop.xml");
+		ApplicationContext context = new ClassPathXmlApplicationContext("part02_annotation/aop.xml");
 		Service svc = (Service) context.getBean("svc");
-		// svc.prn1();
+		svc.prn1();
 
-		// System.out.println("=====================");
-		// svc.prn1(10);
+		System.out.println("=====================");
+		svc.prn1(10);
 
-		// System.out.println("=====================");
-		// svc.prn1(20, 30);
+		System.out.println("=====================");
+		svc.prn1(20, 30);
 
-		// System.out.println("=====================");
-		// svc.prn2();
+		System.out.println("=====================");
+		svc.prn2();
 
-		// System.out.println("=====================");
-		// svc.prn3();
+		System.out.println("=====================");
+		svc.prn3();
 
-		// System.out.println("=====================");
-		// try {
-		// svc.prn4();
-		// } catch (Exception e) {
-		// }
+		System.out.println("=====================");
+		try {
+			svc.prn4();
+		} catch (Exception e) {
+		}
 
 		System.out.println("=====================");
 		svc.prn5();

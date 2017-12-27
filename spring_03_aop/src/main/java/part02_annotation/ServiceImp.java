@@ -1,4 +1,4 @@
-package part01_xml;
+package part02_annotation;
 
 // 핵심 로직만 구현해 놓은 클래스 - 핵심 관점
 public class ServiceImp implements Service {
@@ -32,7 +32,7 @@ public class ServiceImp implements Service {
 	@Override
 	public void prn4() {
 		System.out.println("prn4");
-		String data = "10";
+		String data = "asd";
 		int num = Integer.parseInt(data);
 	}
 

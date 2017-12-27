@@ -12,8 +12,40 @@
 	<!-- Advice설정 -->
 	<aop:config>
 		<aop:aspect ref="common">
-			<aop:before method="comm1"
-				pointcut="execution(* part01_xml.ServiceImp.prn1())" />
+			<!-- 앞에 있는 별표는 리턴값의 자료형 보통 *로 사용한다. -->
+			<!-- <aop:before method="comm1" pointcut="execution(* part01_xml.ServiceImp.prn1())" 
+				/> 인자가 없을때 -->
+			<!-- <aop:before method="comm1" pointcut="execution(* part01_xml.ServiceImp.prn1(*))" 
+				/> 인자가 하나일때 -->
+			<!-- <aop:before method="comm1" pointcut="execution(* part01_xml.ServiceImp.prn1(*,*))" 
+				/> 인자가 두개일때 -->
+			<!-- <aop:before method="comm1" pointcut="execution(* part01_xml.ServiceImp.prn1(..))" 
+				/> 인자가 여러개 일때 -->
+
+			<aop:pointcut expression="execution(* part01_xml.ServiceImp.prn1(..))"
+				id="aa" />
+			<aop:pointcut expression="execution(* part01_xml.ServiceImp.prn2(..))"
+				id="bb" />
+			<aop:pointcut expression="execution(* part01_xml.ServiceImp.prn3(..))"
+				id="cc" />
+			<aop:pointcut expression="execution(* part01_xml.ServiceImp.prn4(..))"
+				id="dd" />
+			<aop:pointcut expression="execution(* part01_xml.ServiceImp.prn5(..))"
+				id="ee" />
+
+			<aop:before method="comm1" pointcut-ref="aa" />
+			<aop:after method="comm2" pointcut-ref="bb" />
+
+			<aop:after-returning method="comm3" pointcut-ref="cc"
+				returning="name" />
+			<!-- 리턴값을 받기위해 사용했던 매개변수의 이름을 'returning'에 쓰면 된다. -->
+
+			<aop:after-throwing method="comm4" pointcut-ref="dd"
+				throwing="ex" />
+			<!-- 익셉션이 선언된 변수의 이름을 'throwing'에 쓰면 된다. -->
+
+			<aop:around method="comm5" pointcut-ref="ee" />
+
 		</aop:aspect>
 	</aop:config>
 
