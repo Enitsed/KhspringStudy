@@ -2,7 +2,7 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd">
+      http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd">
 
 
 	<!-- [1] DataSource 빈 선언 -->
@@ -22,17 +22,27 @@
 		<property name="password" value="${jdbc.password}" />
 	</bean>
 
-
-	<!-- [2] JdbcTemplate 빈 선언 -->
-	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+	<!-- [2] sqlSessionFactoryBean 빈 선언 -->
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
+		<!-- <property name="configLocation" value="classpath:config/configuration.xml"/> -->
+
+		<property name="mapperLocations">
+			<list>
+				<value>classpath:part03_template/memMapper.xml</value>
+			</list>
+		</property>
 	</bean>
 
-	<!-- [3] MemDaoImp 빈 선언 -->
-	<bean id="dao" class="part01_template.MemDaoImp">
-		<property name="jdbcTemplate" ref="jdbcTemplate" />
+	<!-- [3] SqlSessionTemplate 빈 선언 -->
+	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg ref="sqlSessionFactory" />
 	</bean>
+
+	<!-- [4] MemDaoImp 빈 선언 -->
+	<bean id="dao" class="part03_template.MemDaoImp">
+		<property name="sqlSession" ref="sqlSession" />
+	</bean>
+
 
 </beans>
-
-
