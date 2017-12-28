@@ -1,4 +1,4 @@
-package part03_template;
+package part04_emp;
 
 import java.util.List;
 
@@ -17,11 +17,11 @@ import org.mybatis.spring.SqlSessionTemplate;
  *    insert, update, delete   executeUpdate( )        update( )
  */
 
-public class MemDaoImp implements MemDAO {
+public class EmpDaoImp implements EmpDAO {
 
 	private SqlSessionTemplate sqlSession;
 
-	public MemDaoImp() {
+	public EmpDaoImp() {
 
 	}
 
@@ -29,29 +29,38 @@ public class MemDaoImp implements MemDAO {
 		this.sqlSession = sqlSession;
 	}
 
-	public List<MemDTO> list() {
-
-		return sqlSession.selectList("mem.all");
+	public List<EmpDTO> list() {
+		return sqlSession.selectList("emp.all");
 	}
 
-	public void insertMethod(MemDTO dto) {
-		sqlSession.update("mem.ins", dto);
+	@Override
+	public void insertMethod(EmpDTO dto) {
+		// TODO Auto-generated method stub
+
 	}
 
-	public void updateMethod(MemDTO dto) {
-		sqlSession.update("mem.upt", dto);
+	@Override
+	public void updateMethod(EmpDTO dto) {
+		// TODO Auto-generated method stub
+
 	}
 
+	@Override
 	public void deleteMethod(int num) {
-		sqlSession.update("mem.del", num);
+		// TODO Auto-generated method stub
+
 	}
 
-	public MemDTO one(int num) {
-		return sqlSession.selectOne("mem.one", num);
+	@Override
+	public EmpDTO one(int num) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
+	@Override
 	public int countMethod() {
-		return sqlSession.selectOne("mem.cnt");
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 }
