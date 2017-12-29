@@ -1,4 +1,4 @@
-package part01;
+package part02;
 
 import org.mybatis.spring.SqlSessionTemplate;
 

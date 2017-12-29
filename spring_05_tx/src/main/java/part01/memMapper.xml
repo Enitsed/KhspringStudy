@@ -7,7 +7,7 @@
 
 	<insert id="ins" parameterType="part01.MemDTO">
 		insert into mem
-		values(mem_num_seq.nextval,#{name},#{age},#{loc})
+		values(#{num},#{name},#{age},#{loc})
 	</insert>
 
 </mapper>
