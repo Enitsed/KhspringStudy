@@ -3,11 +3,60 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
+	<bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="oracle.jdbc.OracleDriver" />
+		<property name="url" value="jdbc:oracle:thin://@127.0.0.1:1521:xe" />
+		<property name="username" value="hr" />
+		<property name="password" value="a1234" />
+	</bean>
+
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<!-- <property name="configLocation" value="classpath:config/configuration.xml"/> -->
+		<property name="mapperLocations">
+			<list>
+				<value>classpath:part05/memMapper.xml</value>
+				<value>classpath:part06/orderMapper.xml</value>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg ref="sqlSessionFactory" />
+	</bean>
+
+	<bean id="dao" class="part05.MemDaoImp">
+		<property name="sqlSession" ref="sqlSession" />
+	</bean>
+
+	<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg ref="sqlSessionFactory" />
+	</bean>
+
+	<bean id="dao2" class="part06.OrderDaoImp">
+		<property name="sqlSessionTemplate" ref="sqlSessionTemplate" />
+	</bean>
+
 	<!-- Controller -->
 	<bean class="part01.HelloController" />
 	<bean class="part02.HelloModelController" />
 	<bean class="part03.HelloModelAndViewController" />
 	<bean class="part04.HelloCommandController" />
+	<bean class="part05.MemListController">
+		<property name="dao" ref="dao"></property>
+	</bean>
+
+	<bean id="memInsert" class="part05.MemInsertController">
+		<property name="dao" ref="dao"></property>
+	</bean>
+
+	<bean id="orderInsert" class="part06.OrderInsertController">
+		<property name="dao" ref="dao2"></property>
+	</bean>
+	<bean class="part06.OrderListController">
+		<property name="dao" ref="dao2" />
+	</bean>
 
 	<!-- View -->
 	<bean
