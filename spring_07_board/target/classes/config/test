@@ -1,0 +1,18 @@
+
+@ResponseBody ,MessageConverter, 
+<mvc:annotation-driven>
+
+컨트롤러 메소드에 @ResponseBody 로 
+어노테이션이 되어 있다면 메소드에서 리턴되는 값은 
+View 를 통하지 않고  HTTP Response Body 에 
+직접 쓰여지게 된다.(객체가 특정한 포맷형태로 리턴된다.
+ ex : 문자열, json, xml, rss, ...)
+
+
+
+
+<mvc:annotation-driven>요소는
+ @RequestMapping, @ResponseBody,
+  @RequestParam, @PathParam, 
+  @ResponseBody 등의 에노테이션을 사용가능하도록하는 빈을
+   한꺼번에 등록하는 태그라고 생각하면 됨.
