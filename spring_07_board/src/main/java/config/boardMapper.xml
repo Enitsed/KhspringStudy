@@ -9,10 +9,12 @@
 		select count(*) from board
 	</select>
 
-	<select id="list" resultType="dto.BoardDTO">   
+	<select id="list" resultType="dto.BoardDTO" parameterType="dto.PageDTO">   
    <![CDATA[
-     select rownum as rm, a.*   from(
-     select * from board order by ref desc, re_step asc)a
+     select b.* from
+     (select rownum as rm, a.*   from(
+     select * from board order by ref desc, re_step asc)a)b
+     where b.rm>=#{startRow} and b.rm <= #{endRow}
 	]]>
 	</select>
 
@@ -72,6 +74,7 @@
 		delete from board where
 		num=#{num}
 	</delete>
+
 </mapper>
 
 

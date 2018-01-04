@@ -21,52 +21,52 @@ public class BoardDaoImp implements BoardDAO {
 
 	@Override
 	public int count() {
-		return 0;
+		return sqlSession.selectOne("board.count");
 	}
 
 	@Override
 	public List<BoardDTO> list(PageDTO pv) {
-		return sqlSession.selectList("board.list");
+		return sqlSession.selectList("board.list", pv);
 	}
 
 	@Override
 	public void readCount(int num) {
-
+		sqlSession.update("board.readCount", num);
 	}
 
 	@Override
 	public BoardDTO content(int num) {
-		return null;
+		return sqlSession.selectOne("board.content", num);
 	}
 
 	@Override
 	public void reStepCount(BoardDTO dto) {
-
+		sqlSession.insert("board.reStepCount", dto);
 	}
 
 	@Override
 	public void save(BoardDTO dto) {
-
+		sqlSession.insert("board.save", dto);
 	}
 
 	@Override
 	public BoardDTO updateNum(int num) {
-		return null;
+		return sqlSession.selectOne("board.content", num);
 	}
 
 	@Override
 	public void update(BoardDTO dto) {
-
+		sqlSession.update("board.update", dto);
 	}
 
 	@Override
 	public void delete(int num) {
-
+		sqlSession.delete("board.delete", num);
 	}
 
 	@Override
 	public String getFile(int num) {
-		return null;
+		return sqlSession.selectOne("board.uploadFile", num);
 	}
 
 }
