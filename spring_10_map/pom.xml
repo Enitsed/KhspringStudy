@@ -3,8 +3,8 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>kr.mycompany</groupId>
-	<artifactId>myajax</artifactId>
-	<name>spring_09_ajax</name>
+	<artifactId>mymap</artifactId>
+	<name>spring_10_map</name>
 	<packaging>war</packaging>
 	<version>1.0.0-BUILD-SNAPSHOT</version>
 	<properties>
