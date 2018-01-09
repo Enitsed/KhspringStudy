@@ -91,6 +91,9 @@
 		<property name="dao" ref="dao" />
 	</bean>
 
+	<bean id="jsonView"
+		class="org.springframework.web.servlet.view.json.MappingJacksonJsonView" />
+
 	<!-- [10] View 빈 선언 -->
 	<bean class="org.springframework.web.servlet.view.BeanNameViewResolver">
 		<property name="order" value="1" />

@@ -1,0 +1,15 @@
+클라이언트 사이드 템플릿 엔진
+
+  - Mustache -> Handlebar -> JsRender 순서로 발전해 왔음 
+
+  - JsRender : MS가 차기 Office 에 공식 채택한 템플릿 엔진
+
+http://handlebarsjs.com/
+
+
+Handlebars.js는 중첩 중괄호({{ }})를 활용하는 웹 템플릿 엔진으로 
+비슷한 류의 템플릿 엔진인 Mustache의 중첩 중괄호 방식을 차용하고 있습니다. 
+Mustache가 콧수염이란 의미를 가지고 있는데요, 
+중괄호를 눕혀놓은 모습이 콧수염을 닮았다고 하여 지어진 이름이라고 하니 
+Mustache 류의 템플릿 엔진들에서 중괄호가 매우 중요한 
+역할임은 틀림 없어 보입니다
