@@ -109,12 +109,22 @@
 			return false;
 		}
 
+		var form_data = new FormData();
+		form_data.append('bno', '${boardDTO.bno}');
+		form_data.append('replyer', $('#newReplyWriter').val());
+		form_data.append('replytext', $('#newReplyText').val());
+		console.log('filename', $('#filename')[0].files[0]);
+		if ($('#filename')[0].files[0] != undefined)
+			form_data.append('filename', $('#filename')[0].files[0]);
+
 		$.ajax({
 			type : 'POST',
 			dataType : 'json',
 			url : 'replyInsertList.do',
-			data : "bno=${boardDTO.bno}&replyer=" + $('#newReplyWriter').val()
-					+ "&replytext=" + $('#newReplyText').val(),
+			data : form_data,
+			contentType : false,
+			enctype : 'multipart/form-data',
+			processData : false,
 			success : reply_list_result
 		});
 
@@ -129,6 +139,13 @@
 		return year + "/" + month + "/" + date;
 	})
 
+	Handlebars.registerHelper("newUpload", function(uploadFile) {
+		if (uploadFile != null)
+			return uploadFile.substring(uploadFile.indexOf("_") + 1);
+		else
+			return uploadFile;
+	})
+
 	function reply_list_result(res) {
 		//console.log(res);
 		$('.timeline .time_sub').remove();
@@ -138,6 +155,7 @@
 			var source = "<li class='time_sub' id='{{rno}}'>"
 					+ "<p>{{replyer}}</p>" + "<p>{{replytext}}</p>"
 					+ "<p>{{newDate regdate}}</p>"
+					+ "<p>{{newUpload rupload}}</p>"
 					+ "<p><button id='{{rno}}'>delete</button> "
 					+ "<button id='{{rno}}'>update</button></p></li>";
 			var template = Handlebars.compile(source);
@@ -188,7 +206,9 @@
 					class="form-control" type="text" placeholder="USER ID"
 					id="newReplyWriter"> <label for="newReplyText">Reply
 					Text</label> <input class="form-control" type="text"
-					placeholder="REPLY TEXT" id="newReplyText">
+					placeholder="REPLY TEXT" id="newReplyText"> <label
+					for="filename">Upload</label> <input type="file" id="filename"
+					name="filename" />
 			</div>
 
 			<div class="box-footer">
@@ -212,7 +232,15 @@
 					<p>
 						<fmt:formatDate pattern="yyyy/MM/dd" dateStyle="short"
 							value="${replyDTO.regdate}" />
-					</p>
+					</p> <c:if test="${replyDTO.rupload!=null }">
+						<p>
+							<c:set var="numload"
+								value="${fn:indexOf(replyDTO.rupload, '_') +1 }" />
+							<c:set var="strlength" value="${fn:length(replyDTO.rupload)}" />
+							${fn:substring(replyDTO.rupload,numload,strlength)}
+						</p>
+					</c:if>
+
 					<p>
 						<button id="${replyDTO.rno}">delete</button>
 						<button id="${replyDTO.rno}">update</button>
