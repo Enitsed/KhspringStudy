@@ -52,4 +52,9 @@ public class BoardController {
 		return service.replyListProcess(rdto);
 	}
 
+	@RequestMapping("/replyDelete.do")
+	public @ResponseBody List<ReplyDTO> replyDeleteListPage(ReplyDTO rdto) {
+		return service.replyDeleteProcess(rdto);
+	}
+
 } // end class

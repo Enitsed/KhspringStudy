@@ -41,7 +41,24 @@
 		// 수정 모달 숨기기
 		$('#modifyModal').addClass('modifyHide');
 		$('#replyAddBtn').on('click', reply_list);
+
+		// 댓글 수정, 삭제 버튼에 click 이벤트 연결
+		$(document).on('click', '.timeline button', reply_update_delete);
 	});
+
+	function reply_update_delete() {
+		if ($(this).text() == 'delete') {
+			var drno = $(this).prop("id");
+			$.ajax({
+				type : 'GET',
+				dataType : 'json',
+				url : 'replyDelete.do?dno=${boardDTO.bno}&rno=' + drno,
+				success : reply_list_result
+			});
+		} else if ($(this).text() == 'update') {
+
+		}
+	}
 
 	function reply_list() {
 		if ($('#newReplyWriter').val() == '') {
@@ -64,8 +81,16 @@
 		});
 	}
 
+	Handlebars.registerHelper("newDate", function(timeValue) {
+		var dateObj = new Date(timeValue);
+		var year = dateObj.getFullYear();
+		var month = dateObj.getMonth();
+		var date = dateObj.getDate();
+		return year + "/" + month + "/" + date;
+	});
+
 	function reply_list_result(res) {
-		// alert(res);
+		alert(res);
 		$('.timeline .time_sub').remove();
 		$('#replycntSmall').text('[' + res.length + ']');
 		$
