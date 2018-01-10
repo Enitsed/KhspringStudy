@@ -38,13 +38,13 @@
 
 <script type="text/javascript">
 	$(document).ready(function() {
-		// 수정 모달 숨기기
+		//수정 모달 숨기기
 		$('#modifyModal').addClass('modifyHide');
 		$('#replyAddBtn').on('click', reply_list);
 
-		// 댓글 수정, 삭제 버튼에 click 이벤트 연결
+		//댓글 수정, 삭제 버튼에 click이벤트 연결
 		$(document).on('click', '.timeline button', reply_update_delete);
-	});
+	});/////////////////end readly()////////////////
 
 	function reply_update_delete() {
 		if ($(this).text() == 'delete') {
@@ -52,22 +52,22 @@
 			$.ajax({
 				type : 'GET',
 				dataType : 'json',
-				url : 'replyDelete.do?dno=${boardDTO.bno}&rno=' + drno,
+				url : 'replyDelete.do?bno=${boardDTO.bno}&rno=' + drno,
 				success : reply_list_result
 			});
 		} else if ($(this).text() == 'update') {
-
+			alert('update')
 		}
 	}
 
 	function reply_list() {
 		if ($('#newReplyWriter').val() == '') {
-			alert("writer을 작성하세요");
+			alert('writer을 작성하세요');
 			return false;
 		}
 
 		if ($('#newReplyText').val() == '') {
-			alert("Reply Text을 작성하세요");
+			alert('Reply text를 작성하세요.');
 			return false;
 		}
 
@@ -79,41 +79,33 @@
 					+ "&replytext=" + $('#newReplyText').val(),
 			success : reply_list_result
 		});
-	}
+
+	}//end reply_list()/////////////////////////////
 
 	Handlebars.registerHelper("newDate", function(timeValue) {
 		var dateObj = new Date(timeValue);
 		var year = dateObj.getFullYear();
-		var month = dateObj.getMonth();
+		var month = dateObj.getMonth() + 1;
 		var date = dateObj.getDate();
+
 		return year + "/" + month + "/" + date;
-	});
+	})
 
 	function reply_list_result(res) {
-		alert(res);
+		//console.log(res);
 		$('.timeline .time_sub').remove();
 		$('#replycntSmall').text('[' + res.length + ']');
-		$
-				.each(
-						res,
-						function(index, value) {
-							/* $('.timeline')
-									.append(
-											'<li class="time_sub" id="' + value.rno + '"><p>'
-													+ value.replyer
-													+ '</p><p>'
-													+ value.replytext
-													+ '</p><p>'
-													+ new Date(value.regdate)
-													+ '</p><p><button id="' + value.rno
-					+ '">delete</button> <button id="' + value.rno
-					+ '">update</button></p></li>'); */
-
-							var source = "<li class='time_sub' id='{{rno}}'><p>{{replyer}}</p><p>{{replytext}}</p><p>{{regdate}}</p><p><button id='{{rno}}'>delete</button> <button id='{{rno}}'>update</button></p></li>";
-							var template = Handlebars.compile(source);
-							$('.timeline').append(template(value));
-						});
-	}
+		$.each(res, function(index, value) {
+			/* $('.timeline').append('<li class="time_sub" id="'+value.rno+'"><p>'+value.replyer+'</p><p>'+value.replytext+'</p><p>'+new Date(value.regdate)+'</p><p><button id="'+value.rno+'">delete</button><button id="'+value.rno+'">update</button></p></li>'); */
+			var source = "<li class='time_sub' id='{{rno}}'>"
+					+ "<p>{{replyer}}</p>" + "<p>{{replytext}}</p>"
+					+ "<p>{{newDate regdate}}</p>"
+					+ "<p><button id='{{rno}}'>delete</button> "
+					+ "<button id='{{rno}}'>update</button></p></li>";
+			var template = Handlebars.compile(source);
+			$('.timeline').append(template(value));
+		});
+	}//end reply_list_result()
 </script>
 
 </head>
