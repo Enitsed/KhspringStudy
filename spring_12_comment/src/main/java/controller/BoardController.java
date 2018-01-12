@@ -50,7 +50,8 @@ public class BoardController {
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("boardDTO", service.boardViewProcess(bno));
 		// mav.setViewName("boardView");
-		mav.setViewName("boardView2");
+		// mav.setViewName("boardView2");
+		mav.setViewName("boardView3");
 		return mav;
 	}
 
@@ -59,6 +60,7 @@ public class BoardController {
 		// 여기서는 path의 경로 c:/temp/를 이용하기 때문에 request가 필요없다
 
 		MultipartFile file = rdto.getFilename();
+
 		/*
 		 * System.out.println(file.getOriginalFilename());
 		 * System.out.println(rdto.getReplyer());
@@ -72,11 +74,7 @@ public class BoardController {
 
 			// 중복파일명을 처리하기 위해 난수 발생
 			UUID random = UUID.randomUUID();
-
-			String root = path;
-
-			String saveDirectory = root + File.separator;
-
+			String saveDirectory = path;
 			File fe = new File(saveDirectory);
 
 			if (!fe.exists()) // 파일이 존재하지 않으면 위 경로대로 directory를 생성하고
