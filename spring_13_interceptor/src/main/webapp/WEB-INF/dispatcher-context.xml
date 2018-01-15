@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<mvc:annotation-driven></mvc:annotation-driven>
+
+	<!-- controller -->
+	<bean class="part01.controller.HomeController" />
+	<bean class="part02.controller.IndexController" />
+	<bean class="part02.controller.LoginController" />
+	<bean class="part02.controller.NoticeController" />
+
+	<!-- spring Framework. 3.1과 3.2의 버전마다 차이가 있는데. Spring 3.2의 경우는 dispatcher-context.xml 
+		파일에 다음과 같이 설정해주면 끝. 하지만 3.1의 경우는 exclude-mapping을 지원해주지 않으므로, Interceptor 
+		클래스에서 별도의 처리를 거쳐주어야 한다. -->
+
+	<!-- interceptor -->
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<!-- <mvc:mapping path="/list.do" /> <mvc:mapping path="/write.do" /> 
+				<mvc:mapping path="/view.do" /> -->
+			<mvc:mapping path="/**" />
+			<!-- 스프링 3.2 부터 사용 가능한 기능 -->
+			<!-- <mvc:exclude-mapping path="/write.do" /> -->
+			<bean class="part01.interceptor.SampleInterceptor" />
+		</mvc:interceptor>
+
+		<mvc:interceptor>
+			<mvc:mapping path="/noticeList.do" />
+			<bean class="part02.interceptor.LoginInterceptor" />
+		</mvc:interceptor>
+
+	</mvc:interceptors>
+
+	<!-- viewResolver -->
+
+	<bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/view/" />
+		<property name="suffix" value=".jsp" />
+	</bean>
+
+</beans>
