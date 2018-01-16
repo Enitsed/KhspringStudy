@@ -1,7 +1,5 @@
 package dao;
 
-import java.util.HashMap;
-
 import org.mybatis.spring.SqlSessionTemplate;
 
 import dto.MemberDTO;
@@ -22,8 +20,13 @@ public class MemberDaoImp implements MemberDAO {
 	}
 
 	@Override
-	public MemberDTO checkMember(HashMap<String, String> chk) {
-		return sqlSession.selectOne("member.chk", chk);
+	public MemberDTO checkMember(MemberDTO dto) {
+		return sqlSession.selectOne("member.chk", dto);
+	}
+
+	@Override
+	public void insertMember(MemberDTO dto) {
+		sqlSession.insert("member.insert", dto);
 	}
 
 }

@@ -1,10 +1,10 @@
 package service;
 
-import java.util.HashMap;
-
 import dto.MemberDTO;
 
 public interface Service {
-	public MemberDTO memChk(HashMap<String, String> chk);
+	public MemberDTO memChk(MemberDTO dto);
+
+	public void insertMember(MemberDTO dto);
 
 }

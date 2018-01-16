@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<mvc:annotation-driven></mvc:annotation-driven>
 
 	<!-- [1] DataSource빈 선언 -->
 	<bean id="dataSource"
@@ -36,6 +39,19 @@
 	<bean id="service" class="service.ServiceImp">
 		<property name="dao" ref="dao" />
 	</bean>
+
+	<!-- interceptor -->
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<!-- <mvc:mapping path="/list.do" /> <mvc:mapping path="/write.do" /> 
+				<mvc:mapping path="/view.do" /> -->
+			<mvc:mapping path="/**" />
+			<!-- 스프링 3.2 부터 사용 가능한 기능 -->
+			<!-- <mvc:exclude-mapping path="/write.do" /> -->
+			<bean class="interceptor.LoginInterceptor" />
+		</mvc:interceptor>
+
+	</mvc:interceptors>
 
 	<!-- controller -->
 	<bean class="controller.IndexController" />
@@ -73,4 +89,5 @@
 		<property name="suffix" value=".jsp" />
 		<property name="order" value="2" />
 	</bean>
+	
 </beans>

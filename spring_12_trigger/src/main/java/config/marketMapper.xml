@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mt">
+
+	<insert id="pins" parameterType="dto.WarehouseDTO">
+		insert into warehouse(num, code,
+		incnt, inprice)
+		values(tb_insert_seq.nextval,#{code},#{incnt},#{inprice})
+	</insert>
+
+	<select id="pcodeSel" resultType="string">
+		select code from item order by
+		code
+	</select>
+
+	<select id="salesPrice" parameterType="string" resultType="int">
+		select price from item where code=#{code}
+	</select>
+
+	<insert id="salesIns" parameterType="dto.SalesDTO">
+		insert into sales(num, code,
+		sacnt, saprice)
+		values(sa_insert_seq.nextval, #{code}, #{sacnt},
+		#{saprice})
+	</insert>
+
+	<select id="wareSel" resultType="dto.ItemDTO">
+		select * from item order by code
+	</select>
+
+</mapper>   
+
+
+
+
+
+
+
+
+
+
+

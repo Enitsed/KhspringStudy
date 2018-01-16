@@ -1,7 +1,5 @@
 package service;
 
-import java.util.HashMap;
-
 import dao.MemberDaoImp;
 import dto.MemberDTO;
 
@@ -21,9 +19,14 @@ public class ServiceImp implements Service {
 	}
 
 	@Override
-	public MemberDTO memChk(HashMap<String, String> chk) {
+	public MemberDTO memChk(MemberDTO dto) {
 		// TODO Auto-generated method stub
-		return dao.checkMember(chk);
+		return dao.checkMember(dto);
+	}
+
+	@Override
+	public void insertMember(MemberDTO dto) {
+		dao.insertMember(dto);
 	}
 
 }

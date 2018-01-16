@@ -4,12 +4,12 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="member">
-	<select id="chk" parameterType="java.util.HashMap" resultType="dto.MemberDTO">
+	<select id="chk" parameterType="dto.MemberDTO" resultType="dto.MemberDTO">
 		select * from member where
 		id=#{id} and pass=#{pass}
 	</select>
 
-	<insert id="join" parameterType="java.util.HashMap">
+	<insert id="insert" parameterType="dto.MemberDTO">
 		insert into member
 		values(mem_seq.nextval, #{id}, #{pass})
 	</insert>

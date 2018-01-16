@@ -10,7 +10,7 @@ drop table member;
 
 delete from member;
 
-insert into member values(mem_seq.nextval, 'kim', '1235');
+insert into member values(mem_seq.nextval, 'ad', '1235');
 
 CREATE SEQUENCE mem_seq
  START WITH     1

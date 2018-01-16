@@ -1,10 +1,10 @@
 package dao;
 
-import java.util.HashMap;
-
 import dto.MemberDTO;
 
 public interface MemberDAO {
-	public MemberDTO checkMember(HashMap<String, String> chk);
+	public MemberDTO checkMember(MemberDTO dto);
+
+	public void insertMember(MemberDTO dto);
 
 }

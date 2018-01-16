@@ -11,6 +11,7 @@
 		</c:when>
 		<c:otherwise>
 			<a href="index.do">어서오세요. ${dto.id }님</a>
+			<a href="logout.do">로그아웃</a>
 		</c:otherwise>
 	</c:choose>
 </div>
